@@ -47,47 +47,61 @@ If above doesn't work, pls check if you can see bellow message in `dmesg`.
 
 ===============================================
 
-some U-Boot commands special for FL Ok6410                     
-(1)download U-Boot                        
-    $dnw 50008000                            
-	$nand erase 0 100000                                              
-	$nand write.uboot 50008000 0 100000                                
-	#dnw default load address is 0xc0000000                          
-	all in one:
-	$dnw 50008000 && nand erase 0 100000 && nand write.uboot 50008000 0 100000
+___some U-Boot commands special for FL Ok6410___                  
+(1)download U-Boot                                                        
+
+       $dnw 50008000                            
+	   $nand erase 0 100000                                              
+	   $nand write.uboot 50008000 0 100000                                
+	   
+	   #dnw default load address is 0xc0000000                          
+	   all in one:
+	   $dnw 50008000 && nand erase 0 100000 && nand write.uboot 50008000 0 100000
+	   
+(2) download kernel   
+                          
+	   $dnw 50008000                                
+	   $nand erase 100000 500000                               
+	   $nand write.e 50008000 100000 500000                              
+	   all in one:                                                                                
+	   $dnw 50008000 && nand erase 100000 500000 && nand write.e 50008000          100000 500000                                                                                            
 	
-(2) download kernel                             
-	$dnw 50008000                                
-	$nand erase 100000 500000                               
-	$nand write.e 50008000 100000 500000                              
-	all in one:                                                                                
-	$dnw 50008000 && nand erase 100000 500000 && nand write.e 50008000          100000 500000                                                                                            
-	
-(3) download yaffs2 root file system                                                     
-	$dnw 50008000                                         
-	$nand erase 600000 #erase mtdblock2 partition                                      
-	$nand write.yaffs2 50008000 600000 8000000 #instead 8000000 of real image size                                                
-	all in one:                                    
-	$dnw 50008000 && nand erase 600000 && nand write.yaffs2 50008000 600000 8000000
-   (4) download ubifs/cramfs root file system
-	$dnw 50008000
-	$nand erase 600000 #erase mtdblock2 partition
-	$nand write.e 50008000 600000 8000000 #instead 8000000 of real image size
+(3) download yaffs2 root file system                                                       
+
+	   $dnw 50008000                                         
+	   $nand erase 600000 #erase mtdblock2 partition                                      
+	   $nand write.yaffs2 50008000 600000 8000000 #instead 8000000 of real image size                                                
+	   all in one:                                    
+	   $dnw 50008000 && nand erase 600000 && nand write.yaffs2 50008000 600000 8000000
+	   
+(4) download ubifs/cramfs root file system                          
+
+	   $dnw 50008000                               
+	   $nand erase 600000 #erase mtdblock2 partition
+	   $nand write.e 50008000 600000 8000000 #instead 8000000 of real image size
 	all in one:
 	$dnw 50008000 && nand erase 600000 && nand write.e 50008000 600000 8000000
+	
    (5) download jffs2 root file system
+   
 	$dnw 50008000
 	$nand erase 600000 #erase mtdblock2 partition
 	$nand write.jffs2 50008000 600000 8000000 #instead 8000000 of real image size
 	all in one:
 	$dnw 50008000 && nand erase 600000 && nand write.jffs2 50008000 600000 8000000
+	
    (6) deal with bad blocks
+   
 	$nand scrub
+	
    (7) set kernel arguments
+   
 	$setenv bootargs "root=/dev/mtdblock2 rootfstype=yaffs2 console=ttySAC0,115200" 
 	$save
 	$reset
+	
    (8) boot from NFS
+   
 	$setenv bootargs "root=/dev/nfs nfsroot=192.168.0.231:/FileSystem-Yaffs2 \
 	 ip=192.168.0.232:192.168.0.231:192.168.0.201:255.255.255.0:8.8.8.8:eth0:off \
 	 console=ttySAC0,115200"
