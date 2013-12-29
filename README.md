@@ -1,7 +1,7 @@
 This code is based on changbin <changbin.du@gmail.com>
 `git clone https://github.com/Qunero/dnw4linux.git`
 
-rewrite by izobs <ivincentlin@gmail.com>
+Tested by izobs <ivincentlin@gmail.com>
 ==============================================================
 ##BEFORE COMPLIE
 1.ID
