@@ -1,11 +1,11 @@
 This code is based on changbin <changbin.du@gmail.com>
 `git clone https://github.com/Qunero/dnw4linux.git`
-
 Tested by izobs <ivincentlin@gmail.com>
-==============================================================
-##BEFORE COMPLIE
+
+#BEFORE COMPLIE
+
 1.ID
-=================================================
+
     before complie the code,please make sure your broad's idVendor number is 04e8,idproductis 1234.the meassage is writen in dnw.rules.
     Connect your broad to pc,type the following command :
     `sudo lsusb`
@@ -13,10 +13,11 @@ Tested by izobs <ivincentlin@gmail.com>
     `ID 04e8:1234 Samsung Electronics Co.,Ltd`
     which mean you can complie the code now.if not,try to correct the idVendor and idproductis in dnw.rules
 2.driver
-===================================================
+
  the ./src/driver/ file include an usb driver,is an new driver of your broad.although your computer already has.Please install this one,because it can make the download task less erro.What's more,the ./src/dnw/dnw.c using the device named /dev/secbulk0.
 
-##COMPLIE
+#COMPLIE
+=========================================
 
 1. build and install
 =====================
