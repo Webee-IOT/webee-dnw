@@ -21,8 +21,12 @@ __2.linux 的dnw驱动__
 
 __1.编译安装__
 
-	$ makess                                 
+	$ make                                 
 	$ sudo make install                            
+
+ 将`dnw`添加到环境变量。dnw的二进制目录在:
+	
+	$ webee-dnw/dnw-linux/src/dnw
 
 __2.dnw 工具的使用__ 
 
